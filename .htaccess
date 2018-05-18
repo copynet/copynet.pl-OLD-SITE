@@ -1,0 +1,40 @@
+RewriteEngine On
+RewriteBase /
+
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^(.*) $1 [L]
+
+RewriteRule ^szukaj_warsztatu.html?$ index.php?podstrona=szukaj_warsztatu [L,PT]
+RewriteRule ^edycja_warsztatu.html?$ index.php?podstrona=edycja_warsztatu [L,PT]
+RewriteRule ^formularz_zamowienia.html?$ index.php?podstrona=formularz [L,PT]
+RewriteRule ^reklamacje.html?$ index.php?podstrona=reklamacje [L,PT]
+RewriteRule ^warsztat/([0-9]+)/?$ index.php?podstrona=warsztat&id_warsztat=$1 [L,PT]
+
+## jezyki
+RewriteRule ^([a-z]{2,3})/?$ index.php?lang=$1 [L]
+RewriteRule ^([a-z]{2,3})/([0-9]+),([^/]+).html?$ index.php?alias=$2&page=$3&lang=$1 [L]
+RewriteRule ^([a-z]{2,3})/([^/]+).html?$ index.php?alias=$2&lang=$1 [L]
+
+#RewriteRule ^([a-z]{2,3})/([0-9]+)/([0-9]+)-([^/]+).html?$ index.php?id_kategoria=$2&id_artykul=$3&lang=$1 [L]
+RewriteRule ^([a-z]{2,3})/szukaj.html?$ index.php?podstrona=szukaj&lang=$1 [L]
+RewriteRule ^([a-z]{2,3})/kalendarium/([0-9]+)/([0-9]+)-([^/]+).html?$ index.php?podstrona=kalendarium&id_kalendarium=$2&lang=$1 [L]
+
+## PL PL PL PL PL
+RewriteRule ^/?$ index.php [L]
+RewriteRule ^([0-9]+),([^/]+).html?$ index.php?alias_kategorii=$2&page=$1 [L]
+
+RewriteRule ^([^/]+)/([^/]+).html?$ index.php?alias_kategorii=$1&alias_artykulu=$2 [L]
+RewriteRule ^([^/]+)/([^/]+)/([^/]+).html?$ index.php?alias_kategorii=$2&alias_artykulu=$3 [L]
+RewriteRule ^([^/]+)/([^/]+)/([^/]+)/([^/]+).html?$ index.php?alias_kategorii=$3&alias_artykulu=$4 [L]
+RewriteRule ^([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+).html?$ index.php?alias_kategorii=$4&alias_artykulu=$5 [L]
+
+RewriteRule ^([^/]+)/$ index.php?alias_kategorii=$1 [L]
+RewriteRule ^([^/]+)/([^/]+)/?$ index.php?alias_kategorii=$2 [L]
+RewriteRule ^([^/]+)/([^/]+)/([^/]+)/?$ index.php?alias_kategorii=$3 [L]
+RewriteRule ^([^/]+)/([^/]+)/([^/]+)/([^/]+)/?$ index.php?alias_kategorii=$4 [L]
+
+
+
+#RewriteRule ^kalendarium/?$ index.php?podstrona=kalendarium [L]
+#RewriteRule ^kalendarium/([0-9]+)-([^/]+).html?$ index.php?id_kategoria=0&id_artykul=$1 [L]
+
